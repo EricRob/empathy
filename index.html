@@ -72,24 +72,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
             var touchstarttime = 0;
             $(document).on('touchstart', function(e) {
-                touchstarttime = new Date;
-            })
-            $(document).on('touchend', function(e) {
-                delta = new Date - touchstarttime;
-                
                 createCloud(
                     e.originalEvent.changedTouches[0].clientY, 
                     e.originalEvent.changedTouches[0].clientX,
                     delta
-                )
-                
+                )                
             })
             $(document).on('mousedown', function(e) {
-                mousedown = new Date;
-            })
-            $(document).on('mouseup', function(e) {
-                delta = new Date - mousedown;
-                console.log(delta)
                 createCloud(e.clientY, e.clientX, delta)
             })
 
