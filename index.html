@@ -74,12 +74,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             $(document).on('touchstart', function(e) {
                 createCloud(
                     e.originalEvent.changedTouches[0].clientY, 
-                    e.originalEvent.changedTouches[0].clientX,
-                    delta
+                    e.originalEvent.changedTouches[0].clientX
                 )                
             })
             $(document).on('mousedown', function(e) {
-                createCloud(e.clientY, e.clientX, delta)
+                createCloud(e.clientY, e.clientX)
             })
 
         })
