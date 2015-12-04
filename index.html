@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Empathy</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="user-scalable=no,width=500">
     <style>
 
     body, html {
@@ -56,11 +56,17 @@
 
             setTimeout(function() {
                 createCloud(window.innerHeight/2 - 100, window.innerWidth/2)                
-            }, 1000)
+            }, 500)
 
-            $(document).on('click', function(e) {
+            $(document).on('touchstart', function(e) {
+                createCloud(e.originalEvent.changedTouches[0].clientY, e.originalEvent.changedTouches[0].clientX)
+                console.log(e)
+            })
+            $(document).on('mousedown', function(e) {
+                console.log(e)
                 createCloud(e.clientY, e.clientX)
             })
+
         })
     </script>
 </body>
