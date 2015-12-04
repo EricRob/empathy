@@ -16,10 +16,12 @@
     .cloud.start {
         background-size: auto 100%;
         height: 0px;
-        margin-top: 54px;
+        margin-top: 63px;
     }
+
     .cloud {
-        background-image: url('/smilingcloud_360.png');
+        background-image: url('/smilingCloudShadow3.png'); /*233x126*/
+        /*background-image: url('/smilingcloud_360.png');*/
         background-repeat: no-repeat;
         background-position: center;
         background-size: auto 100%;
@@ -29,9 +31,10 @@
     }
     .cloud-container, .cloud {
         position: absolute;
-        width: 209px;
-        height: 102px;
+        width: 233px;
+        height: 126px;
     }
+
     @keyframes bob {
         0% {bottom: 0px;}
         50% {bottom: 20px;}
@@ -45,9 +48,9 @@
     <script>
         $(function() {
 
-            var createCloud = function(y, x) {
+            var createCloud = function(y, x, time) {
                 var cloud = $('<div class="cloud-container"><div class="cloud start"></div></div>')
-                cloud.css({"top":y - 51, "left":x - 104})
+                cloud.css({"top":y - 63, "left":x - 116})
                 $('body').append(cloud)
                 setTimeout(function() {
                     cloud.find('.cloud').removeClass('start')
@@ -55,16 +58,30 @@
             }
 
             setTimeout(function() {
-                createCloud(window.innerHeight/2 - 100, window.innerWidth/2)                
+                createCloud(window.innerHeight/2 - 100, window.innerWidth/2, 1000)                
             }, 500)
 
+            var touchstarttime = 0;
             $(document).on('touchstart', function(e) {
-                createCloud(e.originalEvent.changedTouches[0].clientY, e.originalEvent.changedTouches[0].clientX)
-                console.log(e)
+                touchstarttime = new Date;
+            })
+            $(document).on('touchend', function(e) {
+                delta = new Date - touchstarttime;
+                
+                createCloud(
+                    e.originalEvent.changedTouches[0].clientY, 
+                    e.originalEvent.changedTouches[0].clientX,
+                    delta
+                )
+                
             })
             $(document).on('mousedown', function(e) {
-                console.log(e)
-                createCloud(e.clientY, e.clientX)
+                mousedown = new Date;
+            })
+            $(document).on('mouseup', function(e) {
+                delta = new Date - mousedown;
+                console.log(delta)
+                createCloud(e.clientY, e.clientX, delta)
             })
 
         })
