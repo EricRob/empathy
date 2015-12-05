@@ -4,55 +4,36 @@
     <meta charset="UTF-8">
     <title>Empathy</title>
     <meta name="viewport" content="user-scalable=no,width=500">
-    <style>
-
-    body, html {
-        height: 100%;width:100%;
-    }
-
-    body {
-        background-color: #F68B1F;
-    }
-    .cloud.start {
-        background-size: auto 100%;
-        height: 0px;
-        margin-top: 63px;
-    }
-
-    .cloud {
-        background-image: url('/smilingCloudShadow3.png'); /*233x126*/
-        /*background-image: url('/smilingcloud_360.png');*/
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: auto 100%;
-        margin-top: 0px;
-        transition: height 0.5s cubic-bezier(0.22, 0.61, 0.36, 1), margin 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
-        animation: bob 4s infinite 0.6s;
-    }
-    .cloud-container, .cloud {
-        position: absolute;
-        width: 233px;
-        height: 126px;
-    }
-
-    @keyframes bob {
-        0% {bottom: 0px;}
-        50% {bottom: 20px;}
-        100% {bottom: 0px;}
-    }
-
-    </style>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <!-- Google Tag Manager -->
-<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PQ9XJ3"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-PQ9XJ3');</script>
-<!-- End Google Tag Manager -->
+    <div class="dots">
+        <div class="dot-container green">
+            <div class="dot"></div>
+        </div>
+        <div class="dot-container white">
+            <div class="dot"></div>
+        </div>
+        <div class="dot-container yellow">
+            <div class="dot"></div>
+        </div>
+        <div class="dot-container blue">
+            <div class="dot"></div>
+        </div>
+        <div class="dot-container purple">
+            <div class="dot"></div>
+        </div>
+        <div class="dot-container red">
+            <div class="dot"></div>
+        </div>
+    </div>
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-PQ9XJ3');
+    </script>
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script>
         $(function() {
@@ -65,21 +46,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     cloud.find('.cloud').removeClass('start')
                 }, 100)
             }
-
             setTimeout(function() {
-                createCloud(window.innerHeight/2 - 100, window.innerWidth/2, 1000)                
-            }, 500)
+            $('.dots').addClass('align')
+            }, 2000)
 
-            var touchstarttime = 0;
-            $(document).on('touchstart', function(e) {
-                createCloud(
-                    e.originalEvent.changedTouches[0].clientY, 
-                    e.originalEvent.changedTouches[0].clientX
-                )                
-            })
-            $(document).on('mousedown', function(e) {
-                createCloud(e.clientY, e.clientX)
-            })
+            // setTimeout(function() {
+            //     createCloud(window.innerHeight/2 - 100, window.innerWidth/2, 1000)                
+            // }, 500)
+
+            // $(document).on('touchstart', function(e) {
+            //     createCloud(
+            //         e.originalEvent.changedTouches[0].clientY, 
+            //         e.originalEvent.changedTouches[0].clientX
+            //     )                
+            // })
+            // $(document).on('mousedown', function(e) {
+            //     createCloud(e.clientY, e.clientX)
+            // })
 
         })
     </script>
