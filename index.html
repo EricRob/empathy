@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <div class="dots">
+    <div class="dots start">
         <div class="dot-container green">
             <div class="dot"></div>
         </div>
@@ -46,23 +46,19 @@
                     cloud.find('.cloud').removeClass('start')
                 }, 100)
             }
-            setTimeout(function() {
-            $('.dots').addClass('align')
-            }, 2000)
+            $('.dots').click(function() {
+                $(this).removeClass('start').addClass('align')
+            })
 
-            // setTimeout(function() {
-            //     createCloud(window.innerHeight/2 - 100, window.innerWidth/2, 1000)                
-            // }, 500)
-
-            // $(document).on('touchstart', function(e) {
-            //     createCloud(
-            //         e.originalEvent.changedTouches[0].clientY, 
-            //         e.originalEvent.changedTouches[0].clientX
-            //     )                
-            // })
-            // $(document).on('mousedown', function(e) {
-            //     createCloud(e.clientY, e.clientX)
-            // })
+            $(document).on('touchstart', function(e) {
+                createCloud(
+                    e.originalEvent.changedTouches[0].clientY, 
+                    e.originalEvent.changedTouches[0].clientX
+                )                
+            })
+            $(document).on('click', function(e) {
+                createCloud(e.clientY, e.clientX)
+            })
 
         })
     </script>
